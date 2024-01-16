@@ -7,16 +7,13 @@ import flixel.system.FlxAssets.FlxShader;
  * @author bbpanzu
  */
 class RadialBlur extends FlxShader
-{       #if desktop 
-        @:glVersion("120") //the version for desktops 
-	#end  
-
+{      
 	@:glFragmentSource('
-		#pragma header
+	#pragma header
 
-	uniform float cx = 0.0;
-	uniform float cy = 0.0;
-    uniform float blurWidth = 10.0;
+	float cx = 0.0;
+	float cy = 0.0;
+        float blurWidth = 10.0;
 	
 	const int nsamples = 30;
 	
@@ -38,7 +35,7 @@ class RadialBlur extends FlxShader
 		for(int i = 0; i < nsamples; i++)
 		{
 			float scale = blurStart + (float(i)* precompute);
-		color += texture(bitmap, uv * scale + center);
+		color += flixel_texture2D(bitmap, uv * scale + center);
 		}
 		
 		
