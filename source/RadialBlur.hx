@@ -7,7 +7,9 @@ import flixel.system.FlxAssets.FlxShader;
  * @author bbpanzu
  */
 class RadialBlur extends FlxShader
-{
+{       #if desktop 
+        @:glVersion("120") //the version for desktops 
+	#end  
 
 	@:glFragmentSource('
 		#pragma header
